@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bubble Bonanza</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="sky">
+      <div class="cloud cloud-a"></div>
+      <div class="cloud cloud-b"></div>
+      <div class="cloud cloud-c"></div>
+      <div class="sparkles"></div>
+    </div>
+
+    <main class="game-shell">
+      <section class="hero-panel">
+        <div>
+          <p class="eyebrow">لعبة كرتونية احترافية</p>
+          <h1>Bubble Bonanza</h1>
+          <p class="subtitle">
+            التقط الفقاعات المضيئة، ابنِ كومبو عالي، واهرب من الفقاعات الشقية
+            قبل ما يخلص الوقت.
+          </p>
+        </div>
+
+        <div class="hero-actions">
+          <button id="startButton" class="primary-btn">ابدأ اللعب</button>
+          <button id="muteButton" class="ghost-btn" aria-pressed="false">
+            الصوت شغال
+          </button>
+        </div>
+
+        <div class="tips">
+          <span>التحكم: سهم يمين / شمال</span>
+          <span>أو بالسحب / اللمس على الموبايل</span>
+        </div>
+      </section>
+
+      <section class="hud">
+        <div class="hud-card">
+          <span>النتيجة</span>
+          <strong id="scoreValue">0</strong>
+        </div>
+        <div class="hud-card">
+          <span>الكومبو</span>
+          <strong id="comboValue">x1</strong>
+        </div>
+        <div class="hud-card">
+          <span>الوقت</span>
+          <strong id="timeValue">60</strong>
+        </div>
+        <div class="hud-card">
+          <span>أفضل نتيجة</span>
+          <strong id="bestValue">0</strong>
+        </div>
+      </section>
+
+      <section class="canvas-frame">
+        <canvas id="gameCanvas" width="960" height="540"></canvas>
+
+        <div id="overlay" class="overlay visible">
+          <div class="overlay-card">
+            <p class="overlay-kicker">جاهز للمرح؟</p>
+            <h2 id="overlayTitle">اجمع أكبر عدد من الفقاعات</h2>
+            <p id="overlayText">
+              الفقاعات الذهبية تدي نقاط أكتر، والحمراء تخصم وقت. اضغط ابدأ اللعب
+              وخلي رد فعلك سريع.
+            </p>
+            <button id="overlayButton" class="primary-btn">ابدأ الجولة</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

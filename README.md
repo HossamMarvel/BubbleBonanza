@@ -1,2 +1,25 @@
-# BubbleBonanza
-A cartoon web game built in `HTML/CSS/JavaScript` without external libraries.
+# Bubble Bonanza
+
+لعبة ويب كرتونية خفيفة مبنية بـ `HTML/CSS/JavaScript` بدون مكتبات خارجية.
+
+## التشغيل
+
+افتح ملف `index.html` مباشرة في المتصفح.
+
+## التحكم
+
+- `ArrowLeft` و `ArrowRight`
+- أو السحب/اللمس داخل مساحة اللعبة على الموبايل
+
+## فكرة اللعب
+
+- الفقاعات الخضراء: نقاط عادية
+- الفقاعات الذهبية: نقاط أكثر + وقت إضافي
+- الفقاعات الحمراء: تخصم 5 ثواني
+
+## مميزات مضافة
+
+- ستايل كرتوني responsive
+- Canvas animations و particles
+- مؤثرات صوتية ديناميكية بـ `Web Audio API`
+- حفظ أفضل نتيجة في `localStorage`
