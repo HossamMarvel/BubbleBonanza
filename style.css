@@ -27,6 +27,7 @@ body {
   background:
     radial-gradient(circle at top, rgba(255, 255, 255, 0.45), transparent 28%),
     linear-gradient(180deg, var(--bg-top), var(--bg-bottom));
+  overflow-x: hidden;
   overflow: hidden auto;
 }
 
@@ -138,7 +139,10 @@ body {
 .game-shell {
   width: min(1120px, calc(100vw - 24px));
   margin: 0 auto;
-  padding: 24px 0 28px;
+  padding:
+    max(16px, env(safe-area-inset-top, 0px))
+    0
+    max(20px, env(safe-area-inset-bottom, 0px));
 }
 
 .hero-panel,
@@ -183,6 +187,8 @@ h1 {
   flex-direction: column;
   gap: 12px;
   align-items: stretch;
+  width: min(100%, 360px);
+  justify-self: end;
 }
 
 button {
@@ -227,6 +233,12 @@ button:active {
   color: rgba(25, 64, 103, 0.8);
 }
 
+.tips span {
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.45);
+}
+
 .hud {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -253,6 +265,7 @@ button:active {
   margin-top: 4px;
   font-size: 2rem;
   line-height: 1;
+  overflow-wrap: anywhere;
 }
 
 .canvas-frame {
@@ -270,8 +283,10 @@ canvas {
   display: block;
   width: 100%;
   height: auto;
+  aspect-ratio: 16 / 9;
   border-radius: 28px;
   background: transparent;
+  touch-action: none;
 }
 
 .overlay {
@@ -351,8 +366,17 @@ canvas {
 }
 
 @media (max-width: 860px) {
+  .game-shell {
+    width: min(100vw - 20px, 100%);
+  }
+
   .hero-panel {
     grid-template-columns: 1fr;
+  }
+
+  .hero-actions {
+    width: 100%;
+    justify-self: stretch;
   }
 
   .hud {
@@ -363,7 +387,6 @@ canvas {
 @media (max-width: 560px) {
   .game-shell {
     width: min(100vw - 12px, 100%);
-    padding-top: 12px;
   }
 
   .hero-panel,
@@ -375,6 +398,40 @@ canvas {
     padding: 18px;
   }
 
+  h1 {
+    line-height: 1;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .hero-actions {
+    gap: 10px;
+  }
+
+  .primary-btn,
+  .ghost-btn {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 1rem;
+  }
+
+  .tips {
+    gap: 8px;
+  }
+
+  .tips span {
+    width: 100%;
+    text-align: center;
+    padding: 10px 12px;
+  }
+
+  .hud {
+    gap: 10px;
+    margin: 14px 0;
+  }
+
   .hud-card {
     border-radius: 18px;
     padding: 12px 14px;
@@ -382,5 +439,79 @@ canvas {
 
   .hud-card strong {
     font-size: 1.55rem;
+  }
+
+  .canvas-frame {
+    padding: 10px;
+    border-radius: 22px;
+  }
+
+  canvas,
+  .overlay {
+    border-radius: 18px;
+  }
+
+  .overlay {
+    inset: 10px;
+  }
+
+  .overlay-card {
+    width: min(100%, calc(100% - 12px));
+    padding: 22px 18px 18px;
+    border-radius: 22px;
+    animation: none;
+  }
+
+  .overlay-card h2 {
+    font-size: 1.5rem;
+  }
+
+  .overlay-card p {
+    font-size: 0.96rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .game-shell {
+    width: min(100vw - 8px, 100%);
+  }
+
+  .hero-panel {
+    padding: 16px 14px;
+    gap: 16px;
+  }
+
+  .eyebrow {
+    font-size: 0.82rem;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 11vw, 2.5rem);
+  }
+
+  .subtitle {
+    margin-top: 10px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .hud {
+    grid-template-columns: 1fr;
+  }
+
+  .hud-card {
+    padding: 12px;
+  }
+
+  .hud-card span {
+    font-size: 0.88rem;
+  }
+
+  .hud-card strong {
+    font-size: 1.4rem;
+  }
+
+  .canvas-frame {
+    padding: 8px;
   }
 }
