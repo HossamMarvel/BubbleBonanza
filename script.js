@@ -11,6 +11,7 @@ const overlay = document.getElementById("overlay");
 const overlayTitle = document.getElementById("overlayTitle");
 const overlayText = document.getElementById("overlayText");
 const overlayButton = document.getElementById("overlayButton");
+const gameSection = document.getElementById("gameSection");
 
 const WIDTH = canvas.width;
 const HEIGHT = canvas.height;
@@ -584,6 +585,14 @@ function beginRound() {
   resetGame();
 }
 
+function goToGameAndBegin() {
+  beginRound();
+  gameSection?.scrollIntoView({
+    behavior: "smooth",
+    block: "start",
+  });
+}
+
 function setMuted(muted) {
   audio.muted = muted;
   muteButton.setAttribute("aria-pressed", String(muted));
@@ -596,7 +605,7 @@ function handlePointer(event) {
   game.player.x = clamp(x, 90, WIDTH - 90);
 }
 
-startButton.addEventListener("click", beginRound);
+startButton.addEventListener("click", goToGameAndBegin);
 overlayButton.addEventListener("click", beginRound);
 muteButton.addEventListener("click", () => setMuted(!audio.muted));
 
